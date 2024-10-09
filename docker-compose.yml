@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:7
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"  # پورت ارتباطی RabbitMQ
+      - "15672:15672"  # پورت مدیریت RabbitMQ
+    environment:
+      RABBITMQ_DEFAULT_USER: ai
+      RABBITMQ_DEFAULT_PASS: 123321
+
+  # nestjs:
+  #   build:
+  #   #   context: .
+  #   #   dockerfile: Dockerfile
+  #   container_name: nestjs
+  #   ports:
+  #     - "5000:3000"
+  #   depends_on:
+  #     - mongo
+  #     - rabbitmq
+  #   environment:
+  #     - MONGO_URI=mongodb://mongo:27017/ai-gateway
+  #     - RABBITMQ_URI=amqp://guest:guest@rabbitmq:5672
+
+volumes:
+  mongo_data:

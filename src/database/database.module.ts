@@ -5,6 +5,8 @@ import { CustomersModel, CustomersSchema } from './schemas/customer.schema';
 import { CustomersService } from 'src/customers/customers.service';
 import { PlansService } from 'src/plans/plans.service';
 import { PlanModels, PlanSchema } from './schemas/plan.schema';
+import { HttpModule } from '@nestjs/axios';
+import { CarServiceModel, CarServiceSchema } from './schemas/car-service.schema';
 
 @Module({
     imports: [MongooseModule.forRootAsync({
@@ -12,7 +14,8 @@ import { PlanModels, PlanSchema } from './schemas/plan.schema';
             uri: configService.get<string>('DATABASE_URL'),
         }),
     }),
-    MongooseModule.forFeature([{ name: CustomersModel.name, schema: CustomersSchema }, { name: PlanModels.name, schema: PlanSchema }])],
+        HttpModule,
+    MongooseModule.forFeature([{ name: CustomersModel.name, schema: CustomersSchema }, { name: PlanModels.name, schema: PlanSchema }, { name: CarServiceModel.name, schema: CarServiceSchema }])],
     providers: [CustomersService, PlansService],
     exports: [MongooseModule, CustomersService, PlansService]
 })

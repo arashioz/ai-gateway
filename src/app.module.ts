@@ -13,16 +13,7 @@ import { PlansModule } from './plans/plans.module';
 import { CarServiceModule } from './car-service/car-service.module';
 
 @Module({
-  imports: [RabbitMQModule.forRoot(RabbitMQModule, {
-    exchanges: [
-      {
-        name: 'my_exchange',
-        type: 'topic',
-      },
-    ],
-    uri: 'amqp://ai:123321@localhost:5672',
-    connectionInitOptions: { wait: false },
-  }), , ConfigModule.forRoot({
+  imports: [ConfigModule.forRoot({
     envFilePath: '.development.env',
     isGlobal: true,
     load: [configuration],

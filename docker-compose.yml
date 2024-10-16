@@ -13,11 +13,12 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     ports:
-      - "5672:5672"  # پورت ارتباطی RabbitMQ
-      - "15672:15672"  # پورت مدیریت RabbitMQ
+      - "5672:5672"
+      - "15672:15672"  
     environment:
       RABBITMQ_DEFAULT_USER: ai
       RABBITMQ_DEFAULT_PASS: 123321
+
 
   # nestjs:
   #   build:
@@ -35,3 +36,4 @@ services:
 
 volumes:
   mongo_data:
+

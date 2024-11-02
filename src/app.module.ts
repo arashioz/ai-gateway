@@ -11,13 +11,14 @@ import { AppGuard, } from './auth/auth.guard';
 import { ApiGatewayModule } from './api-gateway/api-gateway.module';
 import { PlansModule } from './plans/plans.module';
 import { CarServiceModule } from './car-service/car-service.module';
+import { DentalServiceModule } from './dental-service/dental-service.module';
 
 @Module({
   imports: [ConfigModule.forRoot({
     envFilePath: '.development.env',
     isGlobal: true,
     load: [configuration],
-  }), DatabaseModule, AuthModule, CustomersModule, ApiGatewayModule, PlansModule, CarServiceModule],
+  }), DatabaseModule, AuthModule, CustomersModule, ApiGatewayModule, PlansModule, CarServiceModule, DentalServiceModule],
   controllers: [],
   providers: [AuthService, JwtService, {
     provide: APP_GUARD,

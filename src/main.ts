@@ -38,7 +38,7 @@ async function bootstrap() {
     urls: ['amqp://ai:123321@localhost:5672/'],
     queue: 'ai_queue',
     queueOptions: {
-      durable: true, // تنظیم به true
+      durable: true,
     },
   };
 

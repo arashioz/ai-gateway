@@ -1,7 +1,7 @@
 import { Body, ConflictException, Controller, Get, Post, Request, UseGuards, ValidationPipe } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDTO } from 'src/common/dto/login.dto';
-import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
 import { Register } from 'src/common/dto/register.dto';
 import { CustomersService } from 'src/customers/customers.service';

@@ -14,7 +14,7 @@ export class CarServiceModel extends Document {
     rawImageFileIds: Array<string>
 
     @Prop()
-    processedImageFileIds:Array<string>
+    processedImageFileIds?:Array<string>
 
     @Prop()
     folderId: string

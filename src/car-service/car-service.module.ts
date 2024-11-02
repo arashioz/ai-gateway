@@ -1,14 +1,14 @@
 import { Module } from '@nestjs/common';
-import { CarServiceService } from './car-service.service';
+import {  CarServiceService } from './car-service.service';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { CarServiceController } from './car-service.controller';
 import { DatabaseModule } from 'src/database/database.module';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
-  imports: [HttpModule,  ],
+  imports: [HttpModule, DatabaseModule
+  ],
   providers: [CarServiceService,
-    DatabaseModule,
     {
       provide: 'CAR_DAMAGE_CLIENT',
       useFactory: () => {
@@ -26,7 +26,7 @@ import { HttpModule } from '@nestjs/axios';
     }
 
   ],
-  exports: ['CAR_DAMAGE_CLIENT',],
+  exports: ['CAR_DAMAGE_CLIENT', CarServiceService],
   controllers: [CarServiceController]
 
 })
